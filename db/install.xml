@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="blocks/webmarks/db" VERSION="20120209" COMMENT="XMLDB file for Moodle blocks/webmarks"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="block_webmarks" COMMENT="Web Bookmarks for use in Moodle Pages.">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="blockid"/>
+        <FIELD NAME="blockid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="false" SEQUENCE="false" COMMENT="The id of the block that this link belongs to" PREVIOUS="id" NEXT="wbm_title"/>
+        <FIELD NAME="wbm_title" TYPE="char" LENGTH="150" NOTNULL="true" SEQUENCE="false" COMMENT="The Web Bookmark Title" PREVIOUS="blockid" NEXT="wbm_desc"/>
+        <FIELD NAME="wbm_desc" TYPE="text" LENGTH="small" NOTNULL="false" SEQUENCE="false" COMMENT="Web Bookmark Description" PREVIOUS="wbm_title" NEXT="wbm_link"/>
+        <FIELD NAME="wbm_link" TYPE="text" LENGTH="small" NOTNULL="true" SEQUENCE="false" COMMENT="Web Bookmark link" PREVIOUS="wbm_desc"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="blockid" UNIQUE="false" FIELDS="blockid" COMMENT="index for the blockids" NEXT="wbm_title"/>
+        <INDEX NAME="wbm_title" UNIQUE="false" FIELDS="wbm_title" COMMENT="Web Bookmarks Title" PREVIOUS="blockid"/>
+      </INDEXES>
+    </TABLE>
+  </TABLES>
+</XMLDB>
